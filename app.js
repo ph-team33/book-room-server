@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const BookAuthorController = require("./controller/BookAuthorController");
+const BookController = require("./controller/BookController");
 
 // Declier the port
 const port = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 
 // App route
 app.use("/bookAuthor", BookAuthorController);
+app.use("/book", BookController);
 
 // Start server to listen HTTP request
 app.listen(process.env.PORT || port, () => {
