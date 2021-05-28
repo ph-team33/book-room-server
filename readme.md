@@ -92,6 +92,8 @@ axios
 ```
 // To add single Book
 
+// category = ["Arts & Music", "BioGraphies", "Computers & Tech", "Education", "Entertainment", "Health & Fitness", "History", "Kids",  "Motivational Books", "Religion", "Romance",],
+
 const uri = `https://shrouded-crag-01009.herokuapp.com/book/`;
 axios
 	.post(uri, postData)
