@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+const BookAuthorController = require("./controller/BookAuthorController");
+
 // Declier the port
 const port = process.env.PORT || 5000;
 
@@ -23,6 +25,9 @@ mongoose
 app.get("/", (req, res) => {
   res.status(200).json("Server running");
 });
+
+// App route
+app.use("/bookAuthor", BookAuthorController);
 
 // Start server to listen HTTP request
 app.listen(process.env.PORT || port, () => {
