@@ -6,6 +6,7 @@ require("dotenv").config();
 const BookAuthorController = require("./controller/BookAuthorController");
 const BookController = require("./controller/BookController");
 const BookTransactionController = require("./controller/BookTransactionController");
+const UserController = require("./controller/UserController");
 
 // Declier the port
 const port = process.env.PORT || 5000;
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use("/bookAuthor", BookAuthorController);
 app.use("/book", BookController);
 app.use("/bookTransaction", BookTransactionController);
+app.use("/user", UserController);
 
 // Start server to listen HTTP request
 app.listen(process.env.PORT || port, () => {
