@@ -19,8 +19,8 @@ router.get("/", (req, res) => {
 });
 
 // Get single data using ID
-router.get("/:id", (req, res) => {
-  User.find({ _id: req.params.id }, (err, data) => {
+router.get("/:email", (req, res) => {
+  User.find({ email: req.params.email }, (err, data) => {
     if (err) {
       res.status(500).json({
         error: "Oops... Something went wrong",
@@ -36,16 +36,34 @@ router.get("/:id", (req, res) => {
 
 // Post single data
 router.post("/", (req, res) => {
-  const newRow = new User(req.body);
-  newRow.save((err) => {
+  let isExist = false;
+  User.find({ email: req.body.email }, (err, data) => {
     if (err) {
       res.status(500).json({
         error: "Oops... Something went wrong",
       });
     } else {
-      res.status(200).json({
-        messages: "Data added successfully",
-      });
+      if (data.length !== 0) {
+        isExist = true;
+        res.status(200).json({
+          data: data[0],
+          messages: "Success",
+        });
+      } else {
+        const newRow = new User(req.body);
+        newRow.save((err) => {
+          if (err) {
+            res.status(500).json({
+              error: "Oops... Something went wrong",
+            });
+          } else {
+            res.status(200).json({
+              data: { ...req.body, role: "Free Member" },
+              messages: "Success",
+            });
+          }
+        });
+      }
     }
   });
 });
