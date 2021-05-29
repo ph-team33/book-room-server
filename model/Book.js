@@ -25,12 +25,12 @@ const bookSchema = mongoose.Schema({
   category: {
     type: String,
     enum: [
-      "Arts & Music",
+      "Arts and Music",
       "BioGraphies",
-      "Computers & Tech",
+      "Computers and Tech",
       "Education",
       "Entertainment",
-      "Health & Fitness",
+      "Health and Fitness",
       "History",
       "Kids",
       "Motivational Books",

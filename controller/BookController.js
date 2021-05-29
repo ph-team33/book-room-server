@@ -4,7 +4,9 @@ const Book = require("../model/Book");
 
 // Get all data
 router.get("/", (req, res) => {
-  Book.find({})
+  const category = req.query.category;
+  const query = category ? { category } : {};
+  Book.find(query)
     .populate("author")
     .exec((err, data) => {
       if (err) {
