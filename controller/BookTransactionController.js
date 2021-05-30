@@ -4,7 +4,8 @@ const BookTransaction = require("../model/BookTransaction");
 
 // Get all data
 router.get("/", (req, res) => {
-  BookTransaction.find({})
+  const filter = req.query.email ? { email: req.query.email } : {};
+  BookTransaction.find(filter)
     .populate("book")
     .exec((err, data) => {
       if (err) {
