@@ -40,6 +40,22 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// // Post multiple data
+// router.post("/", (req, res) => {
+//   //const newRow = new Book(req.body);
+//   Book.insertMany(req.body, (err) => {
+//     if (err) {
+//       res.status(500).json({
+//         error: "Oops... Something went wrong",
+//       });
+//     } else {
+//       res.status(200).json({
+//         messages: "Data added successfully",
+//       });
+//     }
+//   });
+// });
+
 // Post single data
 router.post("/", (req, res) => {
   const newRow = new Book(req.body);
