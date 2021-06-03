@@ -11,6 +11,7 @@ const FeedbackController = require("./controller/FeedbackController");
 
 // Import fakeData
 const fakeData = require("./model/fakeData");
+const fakeCategories = require("./model/fakeCategories");
 
 // Declier the port
 const port = process.env.PORT || 5000;
@@ -45,6 +46,13 @@ app.use("/books", (req, res) => {
   res.status(200).json({
     messages: "Sussess",
     data: fakeData,
+  });
+});
+
+app.use("/categories", (req, res) => {
+  res.status(200).json({
+    messages: "Sussess",
+    data: fakeCategories,
   });
 });
 
