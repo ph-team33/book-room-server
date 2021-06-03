@@ -9,6 +9,9 @@ const BookTransactionController = require("./controller/BookTransactionControlle
 const UserController = require("./controller/UserController");
 const FeedbackController = require("./controller/FeedbackController");
 
+// Import fakeData
+const fakeData = require("./model/fakeData");
+
 // Declier the port
 const port = process.env.PORT || 5000;
 
@@ -36,6 +39,14 @@ app.use("/book", BookController);
 app.use("/bookTransaction", BookTransactionController);
 app.use("/user", UserController);
 app.use("/feedback", FeedbackController);
+
+// Mobile app book API
+app.use("/books", (req, res) => {
+  res.status(200).json({
+    messages: "Sussess",
+    data: fakeData,
+  });
+});
 
 // Start server to listen HTTP request
 app.listen(process.env.PORT || port, () => {
